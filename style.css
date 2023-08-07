@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+.block {
+    position: relative;
+    margin: 10% auto 0;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(0deg, black, rgb(44, 44, 44) );
+}
+
+.block img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.block-text {
+    position: absolute;
+    z-index: 3;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.glow::before, .glow::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    transition: 3s linear;
+    /* animation: animate 20s linear infinite; */
+}
+
+.glow:hover::after, .glow:hover::before {
+    animation: animate 20s linear infinite;
+    transition: 3s linear;
+
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.glow::after {
+    filter: blur(20px);
+    opacity: 0.9;
+}
+
+/* Button */
+
+button {
+    height: 4.5em;
+    width: 10em;
+    margin: 5rem auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    border: none;
+}
+
+button::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: repeating-linear-gradient(to right, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff );
+    background-size: contain;
+    border-radius: 0.2rem;
+}
+
+
+button::after {
+    content: "Click me";
+    position: absolute;
+    background-color: #030303;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    height: 98%;
+    width: 98%;
+    top: 2%;
+    left: 1%;
+    right: 0%;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+}
+
+
+button:hover::before {
+    background-position: -106em 0;
+    transition: 10s linear;
+}
